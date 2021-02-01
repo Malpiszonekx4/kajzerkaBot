@@ -1,0 +1,17 @@
+{
+  "name": "kajzerkabot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bot.js",
+  "scripts": {
+    "test": "nodemon bot.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^12.5.1",
+    "discord.js-commando": "0.11.1",
+    "dotenv": "^8.2.0",
+    "sqlite3": "^5.0.1"
+  }
+}
