@@ -1,5 +1,5 @@
 const Commando = require('discord.js-commando');
-const client = new Commando.Client({owner: process.env.ownerId,commandPrefix: "!"})
+const client = new Commando.Client({owner: process.env.ownerId,commandPrefix: process.env.prefix})
 
 require('dotenv').config();
 
