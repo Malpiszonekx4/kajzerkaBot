@@ -1,5 +1,5 @@
 const Commando = require('discord.js-commando');
-const client = new Commando.Client({owner: "440169257817473045",commandPrefix: "!"})
+const client = new Commando.Client({owner: process.env.ownerId,commandPrefix: "!"})
 
 require('dotenv').config();
 
@@ -16,17 +16,6 @@ client.on('ready', () => {
         .registerCommandsIn(__dirname+"/commands");
 });
 
-/* client.on('message', async(msg) => {
-    if(!msg.content.startsWith(prefix)) return;
-    if(msg.author.bot) return;
-    let args = msg.content.split(" ");
-    let cmd = args.shift().replace("!","");
-
-    console.log(args)
-    if(cmd == "addCounter"){
-        if(args.length <=1){
-            let countName = args;
-        }
-    }
-}); */
 client.login(process.env.token);
+
+require("./site");
