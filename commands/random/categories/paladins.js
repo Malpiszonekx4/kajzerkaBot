@@ -26,7 +26,8 @@ module.exports.tanks = [
 	"Raum",
 	"Ruckus",
 	"Terminus",
-	"Torvald"
+	"Torvald",
+	"Yagorath"
 ]
 
 module.exports.healers = [
