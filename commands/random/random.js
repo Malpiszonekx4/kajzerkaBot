@@ -28,6 +28,18 @@ class random extends Commando.Command{
      * @param {Commando.CommandoMessage} msg 
      */
     async run(msg, {name, count}){
+        if(name == "?"){
+            let s = "Categories:\n";
+            for(let cat in categories){
+                let i = 0;
+                for(let sub in categories[cat]){
+                    i++;
+                }
+                s +=cat+`(${i} sub categories)`+"\n"
+            }
+            return msg.reply(s)
+        }
+
         let result = [];
         let response = "";
         if(name.indexOf(".") == -1){
@@ -37,10 +49,24 @@ class random extends Commando.Command{
         } 
         else {
             let o = categories;
+            /** @type {string[]} */
             let n = name.split(".")
+            let cat = "";
             if(o[n[0]] == undefined) return msg.reply("This category doesn't exist")
-            for(let i = 0; i <=n.length; i++){
-                o = o[n.shift()]
+            for(let sub of n){
+                if(sub == "?"){
+                    if(!isNaN(parseInt(Object.keys(o)[0]))) return msg.reply(`Values for \`${cat}\` category:${o.map((val)=>{
+                        return ` ${val}`
+                    })}`)
+                    else return msg.reply(`Sub categories for ${cat}:\n ${Object.keys(o).map((val)=>{
+                        return ` ${val}`
+                    })}`)
+                }
+                if(o[sub]){
+                    o = o[sub]
+                    if(cat.length == 0) cat += sub
+                    else cat += "."+sub
+                } 
             }
             result = o;
         }
