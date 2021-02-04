@@ -1,7 +1,7 @@
+require('dotenv').config();
+
 const Commando = require('discord.js-commando');
 const client = new Commando.Client({owner: process.env.ownerId,commandPrefix: process.env.prefix})
-
-require('dotenv').config();
 
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
