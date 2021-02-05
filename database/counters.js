@@ -1,5 +1,6 @@
 const Datastore = require('nedb')
 const db = new Datastore({filename: "./database/counters.db", autoload: true});
+
 exports.createCounter = (displayName, internalName)=>{
     return new Promise(Resolve=>{
         db.find({name: internalName},(err, docs)=>{
@@ -40,5 +41,27 @@ exports.getCounters = ()=>{
         else{
             Resolve(data)
         }
+    })
+}
+
+exports.removeCounter = (counterName)=>{
+    return new Promise(Resolve=>{
+        db.find({name: counterName}, (err, docs)=>{
+            if(docs.length == 0){
+                Resolve("404")
+            }
+            else{
+                db.remove({name: counterName})
+                Resolve("done")
+            }
+        })
+    })
+}
+
+exports.getCounter = (counterName)=>{
+    return new Promise(Resolve=>{
+        db.find({name: counterName}, (err, docs)=>{
+            Resolve(docs[0])
+        })
     })
 }
