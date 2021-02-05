@@ -1,8 +1,8 @@
 const Commando = require("discord.js-commando")
 
-const {removeCounter, getCounter, getCounters} = require("../../database/counters.js")
+const {removeCounter, getCounter} = require("../../database/counters.js")
 
-class listCounters extends Commando.Command{
+class RemoveCounter extends Commando.Command{
     constructor(client){
         super(client,{
             name:"removecounter",
@@ -35,4 +35,4 @@ class listCounters extends Commando.Command{
     }
 }
 
-module.exports = listCounters
+module.exports = RemoveCounter
