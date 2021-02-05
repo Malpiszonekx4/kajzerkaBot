@@ -1,6 +1,6 @@
 const Commando = require("discord.js-commando")
 
-const {createCounter} = require("../../db")
+const {createCounter} = require("../../nedb")
 
 class addCounter extends Commando.Command{
     constructor(client){
@@ -31,7 +31,7 @@ class addCounter extends Commando.Command{
     async run(message, {name, id}){
         let cc = await createCounter(name, id)
         if(cc == "exists"){
-            message.reply("Counter with this name already exists")
+            message.reply(`Counter \`${id}\` already exists`)
         }
         else{
             message.reply("Counter succesfully created")

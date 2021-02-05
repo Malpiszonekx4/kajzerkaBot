@@ -1,6 +1,6 @@
 const Commando = require("discord.js-commando")
 
-const {countCounter} = require("../../db")
+const {countCounter} = require("../../nedb")
 
 class Count extends Commando.Command{
     constructor(client){
@@ -28,7 +28,7 @@ class Count extends Commando.Command{
             message.reply("Counter with this name doesn't exist")
         }
         else{
-            message.reply(`Counter "${cc.name}" is now ${cc.newV}`)
+            message.reply(`Counter \`${cc.name}\` is now \`${cc.newV}\``)
         }
     }
 }

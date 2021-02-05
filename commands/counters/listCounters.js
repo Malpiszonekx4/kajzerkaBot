@@ -1,6 +1,6 @@
 const Commando = require("discord.js-commando")
 
-const {getCounters} = require("../../db")
+const {getCounters} = require("../../database/counters.js")
 
 class listCounters extends Commando.Command{
     constructor(client){
@@ -24,7 +24,7 @@ class listCounters extends Commando.Command{
         else{
             let s = ""
             for(let cc of c){
-                s +=`${cc.name}(\`${cc.id}\`) = ${cc.count}\n`
+                s +=`${cc.displayName}(\`${cc.name}\`) = ${cc.count}\n`
             }
             message.reply("Counters:\n"+s)
         }
