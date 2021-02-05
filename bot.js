@@ -8,7 +8,9 @@ client.on('ready', () => {
     client.registry
         .registerGroups([
             ["counters","Counters commands"],
-            ["random", "command to randomising things"]
+            ["random", "command to randomising things"],
+            ["mute", "Muting commands"],
+            ["settings", "settings"]
         ])
         .registerDefaults({
             unknownCommand: false
