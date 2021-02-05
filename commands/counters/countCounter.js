@@ -1,6 +1,6 @@
 const Commando = require("discord.js-commando")
 
-const {countCounter} = require("../../nedb")
+const {countCounter} = require("../../database/counters")
 
 class Count extends Commando.Command{
     constructor(client){
