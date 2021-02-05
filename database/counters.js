@@ -1,5 +1,5 @@
 const Datastore = require('nedb')
-const db = new Datastore({filename: "./counters.db", autoload: true});
+const db = new Datastore({filename: "./database/countersa.db", autoload: true});
 exports.createCounter = (displayName, internalName)=>{
     return new Promise(Resolve=>{
         db.find({name: internalName},(err, docs)=>{
