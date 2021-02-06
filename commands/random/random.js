@@ -52,7 +52,6 @@ class random extends Commando.Command{
             /** @type {string[]} */
             let n = name.split(".")
             let cat = "";
-            if(o[n[0]] == undefined) return msg.reply("This category doesn't exist")
             for(let sub of n){
                 if(sub == "?"){
                     if(!isNaN(parseInt(Object.keys(o)[0]))) return msg.reply(`Values for \`${cat}\` category:${o.map((val)=>{
@@ -62,11 +61,14 @@ class random extends Commando.Command{
                         return ` ${val}`
                     })}`)
                 }
-                if(o[sub]){
+                if(o[sub] != undefined){
                     o = o[sub]
                     if(cat.length == 0) cat += sub
                     else cat += "."+sub
-                } 
+                }
+                else{
+                    return msg.reply(`This category(\`${sub}\`) doesn't exist`)
+                }
             }
             result = o;
         }
