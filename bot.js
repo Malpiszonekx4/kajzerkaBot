@@ -10,7 +10,8 @@ client.on('ready', () => {
             ["counters","Counters commands"],
             ["random", "command to randomising things"],
             ["mute", "Muting commands"],
-            ["settings", "settings"]
+            ["settings", "settings"],
+            ["misc", "miscellaneous"]
         ])
         .registerDefaults({
             unknownCommand: false
