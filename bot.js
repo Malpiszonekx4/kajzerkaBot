@@ -13,7 +13,9 @@ client.on('ready', () => {
             ["settings", "settings"],
             ["misc", "miscellaneous"]
         ])
-        .registerDefaults({
+        .registerDefaultTypes()
+        .registerDefaultTypes()
+        .registerDefaultCommands({
             unknownCommand: false
         })
         .registerCommandsIn(__dirname+"/commands");
