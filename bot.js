@@ -14,7 +14,7 @@ client.on('ready', () => {
             ["misc", "miscellaneous"]
         ])
         .registerDefaultTypes()
-        .registerDefaultTypes()
+        .registerDefaultGroups()
         .registerDefaultCommands({
             unknownCommand: false
         })
