@@ -1,0 +1,23 @@
+[
+    {
+        "activity": {
+            "name": "! or @Kajzerka",
+            "type": "LISTENING"
+        },
+        "status": "online"
+    },
+    {
+        "activity": {
+            "name": "@kajzerka help",
+            "type": "LISTENING"
+        },
+        "status": "online"
+    },
+    {
+        "activity": {
+            "name": "%users% users in %guilds% guilds",
+            "type": "WATCHING"
+        },
+        "status": "online"
+    }
+]

@@ -1,4 +1,5 @@
 require('dotenv').config();
+const fs = require('fs');
 
 const Commando = require('discord.js-commando');
 const client = new Commando.Client({owner: process.env.ownerId,commandPrefix: process.env.prefix})
@@ -11,7 +12,8 @@ client.on('ready', () => {
             ["random", "command to randomising things"],
             ["mute", "Muting commands"],
             ["settings", "settings"],
-            ["misc", "miscellaneous"]
+            ["misc", "miscellaneous"],
+            ["kick", "kicking commands"]
         ])
         .registerDefaultTypes()
         .registerDefaultGroups()
@@ -19,8 +21,21 @@ client.on('ready', () => {
             unknownCommand: false
         })
         .registerCommandsIn(__dirname+"/commands");
+    loadEvents()
+    require('./presence.js')(client);
 });
 
 client.login(process.env.token);
+
+let events = []
+
+function loadEvents(){
+    let files = fs.readdirSync(__dirname+"/events")
+    files.forEach((val)=>{
+        let v = require(__dirname+"/events/"+val)
+        if(val.endsWith(".js")) events.push(v)
+        v(client)
+    })
+}
 
 require("./site");
