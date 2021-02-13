@@ -1,7 +1,6 @@
 const Discord = require('discord.js');
 
 const {deleteVcChannel, getVcChannels} = require("../database/tempVcChannels")
-const {VoiceStatus} = require('../enums');
 
 /**
  * 
