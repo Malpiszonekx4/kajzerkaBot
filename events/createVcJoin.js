@@ -4,7 +4,6 @@ const {getCreateVcChannelName, getCreateVcChannelId} = require("../database/crea
 const {addVcChannel} = require("../database/tempVcChannels")
 
 /**
- * 
  * @param {Discord.Client} bot 
  */
 
@@ -18,7 +17,7 @@ async function event(bot){
         if(!newState.guild.me.hasPermission("MANAGE_CHANNELS")) return // bot doesn't have required permissions
         let name = await getCreateVcChannelName(newState.guild.id)
         if(name == undefined) name = `🔈 ${newState.member.displayName}`
-        name = name.replace("%usernick%", newState.member.displayName)
+        else name = name.replace("%usernick%", newState.member.displayName)
         let c = await newState.guild.channels.create(name, {type: "voice"})
         newState.member.voice.setChannel(c)
         addVcChannel(c.id, newState.guild.id)
