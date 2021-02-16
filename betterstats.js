@@ -1,4 +1,4 @@
-const {Client} = require('discord.js');
+const {Client, GuildMember} = require('discord.js');
 /**
  * 
  * @param {Client} client 
@@ -7,12 +7,19 @@ const {Client} = require('discord.js');
 module.exports.getUsers = (client)=>{
     return new Promise(async (Resovle)=>{
         let usersN = 0;
-        await client.guilds.cache.forEach(async (guild)=>{
-            let members = await guild.members.fetch()
-            members.forEach((member)=>{
-                if(!member.user.bot) usersN = usersN+1;
-            })
-        })
+        /**
+         * @type {GuildMember[]}
+         */
+        let m = []
+        for(let guild of client.guilds.cache.array()){
+            let members = await (await guild.members.fetch()).array()
+            for(let member of members){
+                if(member.user.bot) continue
+                if(m.some((gm)=>{return gm.id == member.id;})) continue
+                m.push(member)
+                usersN = usersN+1;
+            }
+        }        
         Resovle(usersN)
     })
 }
