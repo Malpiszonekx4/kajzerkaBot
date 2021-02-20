@@ -28,7 +28,7 @@ class Count extends Commando.Command{
             message.reply("Counter with this name doesn't exist")
         }
         else{
-            message.reply(`Counter \`${cc.name}\` is now \`${cc.newV}\``)
+            message.reply(`Counter \`${cc.internalName}\` is now \`${cc.newV}\``)
         }
     }
 }

@@ -19,12 +19,12 @@ class listCounters extends Commando.Command{
     async run(message, {name}){
         let c = await getCounters()
         if(c == "no counters"){
-            message.reply("No counter created 😢\n Create one with `!addcounter`")
+            message.reply(`No counter created 😢\n Create one with \`${process.env.prefix}addcounter\``)
         }
         else{
             let s = ""
             for(let cc of c){
-                s +=`${cc.displayName}(\`${cc.name}\`) = ${cc.count}\n`
+                s +=`${cc.displayName}(\`${cc.internalName}\`) = ${cc.count}\n`
             }
             message.reply("Counters:\n"+s)
         }

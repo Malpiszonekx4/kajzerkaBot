@@ -22,6 +22,7 @@ client.on('ready', () => {
         })
         .registerCommandsIn(__dirname+"/commands");
     loadEvents()
+    schedule()
     require('./presence.js')(client);
 });
 
@@ -33,6 +34,16 @@ function loadEvents(){
     let files = fs.readdirSync(__dirname+"/events")
     files.forEach((val)=>{
         let v = require(__dirname+"/events/"+val)
+        if(val.endsWith(".js")) events.push(v)
+        v(client)
+    })
+}
+
+let schedules = []
+function schedule(){
+    let files = fs.readdirSync(__dirname+"/schedules")
+    files.forEach((val)=>{
+        let v = require(__dirname+"/schedules/"+val)
         if(val.endsWith(".js")) events.push(v)
         v(client)
     })

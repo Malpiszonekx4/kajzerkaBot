@@ -30,7 +30,7 @@ class RemoveCounter extends Commando.Command{
             message.reply(`Counter \`${name}\` not found`)
         }
         else{
-            message.reply(`Counter \`${cc.displayName}\`(\`${cc.name}\`) has been removed`)
+            message.reply(`Counter \`${cc.displayName}\`(\`${cc.internalName}\`) has been removed`)
         }
     }
 }
