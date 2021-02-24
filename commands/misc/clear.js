@@ -32,8 +32,12 @@ class Clear extends Commando.Command{
      */
     async run(msg, {count, force}){
         if(!msg.guild.me.hasPermission("MANAGE_MESSAGES")) return msg.reply("I can't delete messages, need Manage Messages permission")
-        let m = await msg.channel.messages.fetch(count)
-        if(m.content != undefined){
+        let m
+        try{
+             m = await msg.channel.messages.fetch(count)
+        }catch{ }
+        
+        if(m != undefined){
             let c = []
             let messages = await (await msg.channel.messages.fetch()).array()
             for(let fm of messages){
