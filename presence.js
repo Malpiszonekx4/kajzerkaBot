@@ -10,6 +10,9 @@ module.exports = async (client)=>{
     //#region replaceVars
     p.activity.name = p.activity.name.replace("%guilds%", client.guilds.cache.size)
     p.activity.name = p.activity.name.replace("%users%", await getUsers(client))
+    p.activity.name = p.activity.name.replace("%prefix%", process.env.prefix)
+    p.activity.name = p.activity.name.replace("%botname%", client.user.username)
+
     //#endregion
     client.user.setPresence(presence[i])
     .catch(console.error)

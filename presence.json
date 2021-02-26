@@ -1,14 +1,14 @@
 [
     {
         "activity": {
-            "name": "! or @Kajzerka",
+            "name": "%prefix% or @%botname%",
             "type": "LISTENING"
         },
         "status": "online"
     },
     {
         "activity": {
-            "name": "@kajzerka help",
+            "name": "@%botname% help",
             "type": "LISTENING"
         },
         "status": "online"
