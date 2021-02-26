@@ -42,7 +42,7 @@ exports.countCounter = (internalName)=>{
                 db.update({internalName: internalName}, {$set: {count: cpp}})
 
                 Resolve({
-                    "internalName":docs[0].name,
+                    "internalName":docs[0].internalName,
                     "oldV":c,
                     "newV":cpp
                 })
