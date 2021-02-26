@@ -20,7 +20,7 @@ class ListStatChannels extends Commando.Command{
      */
     async run(msg){
         let channels = await getGuildChannels(msg.guild.id)
-
+        if(channels.length == 0) return msg.reply(`No stat channels in this guild. \n You can add some with \`${process.env.prefix}setstatchannel (channel id) (channel text)\``)
         let res = ""
 
         for(let c of channels){
