@@ -1,6 +1,9 @@
 const Datastore = require('nedb')
 const db = new Datastore({filename: "./database/stat-channels.db", autoload: true});
 
+/**
+ * @return {{guildId, channelId, text}[]} 
+ */
 exports.getGuildChannels = (guildId)=>{
     return new Promise(Resolve=>{
         db.find({guildId: guildId}, (err,docs)=>{
@@ -9,13 +12,19 @@ exports.getGuildChannels = (guildId)=>{
     })
 }
 
-exports.setChannelText = (guildId, channelId, text)=>{
-    let f = db.find({guildId: guildId, channelId: channelId}, (err, docs)=>{
+exports.setStatChannelText = (guildId, channelId, text)=>{
+    db.find({guildId: guildId, channelId: channelId}, (err, docs)=>{
         if(docs.length == 0){
             db.insert({guildId: guildId, channelId: channelId, text: text})
         }
         else{
             db.update({guildId: guildId, channelId: channelId}, {$set: {text: text}})
         }
+    })
+}
+
+exports.removeStatChannel = (guildId, channelId) =>{
+    return new Promise(Resolve=>{
+        db.remove({guildId: guildId, channelId: channelId})
     })
 }

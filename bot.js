@@ -13,7 +13,8 @@ client.on('ready', () => {
             ["mute", "Muting commands"],
             ["settings", "settings"],
             ["misc", "miscellaneous"],
-            ["kick", "kicking commands"]
+            ["kick", "kicking commands"],
+            ["statchannels", "Stat channels commands"]
         ])
         .registerDefaultTypes()
         .registerDefaultGroups()
