@@ -1,10 +1,9 @@
-const {Client} = require('discord.js');
 const presence = require('./presence.json');
-const {getUsers} = require("./betterstats")
+const {getUsers} = require("./betterstats");
+const { CommandoClient } = require('discord.js-commando');
 let i = 0;
 /**
- * 
- * @param {Client} client 
+ * @param {CommandoClient} client 
  */
 module.exports = async (client)=>{
     let p = presence[i]

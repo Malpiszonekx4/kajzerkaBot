@@ -11,7 +11,6 @@ exports.getGuildChannels = (guildId)=>{
 
 exports.setChannelText = (guildId, channelId, text)=>{
     let f = db.find({guildId: guildId, channelId: channelId}, (err, docs)=>{
-        console.log(docs)
         if(docs.length == 0){
             db.insert({guildId: guildId, channelId: channelId, text: text})
         }

@@ -1,12 +1,9 @@
-const Discord = require('discord.js');
+const { CommandoClient } = require('discord.js-commando');
 
 const {getCreateVcChannelName, getCreateVcChannelId} = require("../database/createVc")
 const {addVcChannel} = require("../database/tempVcChannels")
 
-/**
- * @param {Discord.Client} bot 
- */
-
+/** @param {CommandoClient} bot */
 async function event(bot){
     if(bot == undefined) return console.trace("No client specified")
     bot.on("voiceStateUpdate", async (oldState, newState)=>{

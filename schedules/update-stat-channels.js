@@ -1,12 +1,11 @@
-const Discord = require('discord.js');
-
 const {getGuildChannels} = require("../database/stat-channels.js")
+const { CommandoClient } = require("discord.js-commando")
+
 const {getUserCountInGuild, getBotCountInGuild} = require("../betterstats")
 
 /**
- * @param {Discord.Client} bot 
+ * @param {CommandoClient} bot 
  */
-
 async function schedule(bot){
     setTimeout(()=>{schedule(bot)},1000 * 60 * 5)
     if(bot == undefined) return console.trace("No client specified")
@@ -21,7 +20,6 @@ async function schedule(bot){
         for(let ch of channels){
             let name = channelss[i].text.replace("%usercount%", await getUserCountInGuild(bot, guild.id))
             name = name.replace("%botcount%", await getBotCountInGuild(bot, guild.id))
-            console.log(`renaming ${ch.name} to ${name}`)
             ch.setName(name, "stat update")
             i++;
         }
