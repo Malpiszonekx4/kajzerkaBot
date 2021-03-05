@@ -1,7 +1,10 @@
 const Datastore = require('nedb')
 const db = new Datastore({filename: "./database/settings.db", autoload: true});
-
-exports.getMuteRole = (guildId)=>{
+/**
+ * @param {String} guildId 
+ * @returns {{guildId: String, muteRoleId: String, muteMsg: String}}
+ */
+exports.getMuteSettings = (guildId)=>{
     return new Promise(Resolve =>{
         db.find({guildId: guildId}, (err, docs)=>{
             if(docs.length == 0) Resolve(undefined)
@@ -10,11 +13,31 @@ exports.getMuteRole = (guildId)=>{
     })
 }
 
-exports.setMuteRole = (guildId, roleId)=>{
+exports.setMuteRole = (guildId, muteRoleId)=>{
     return new Promise(Resolve=>{
         db.find({guildId: guildId}, (err, docs)=>{
-            if(docs.length == 0) db.insert({guildId: guildId, roleId: roleId})
-            else db.update({guildId: guildId}, {$set: {roleId: roleId}})
+            if(docs.length == 0) db.insert({guildId: guildId})
+            db.update({guildId: guildId}, {$set: {muteRoleId: muteRoleId}})
+        })
+        Resolve()
+    })
+}
+
+exports.setMuteMsg = (guildId, msg)=>{
+    return new Promise(Resolve=>{
+        db.find({guildId: guildId}, (err, docs)=>{
+            if(docs.length == 0) db.insert({guildId: guildId})
+            db.update({guildId: guildId}, {$set: {muteMsg: msg}})
+        })
+        Resolve()
+    })
+}
+
+exports.setUnmuteMsg = (guildId, msg)=>{
+    return new Promise(Resolve=>{
+        db.find({guildId: guildId}, (err, docs)=>{
+            if(docs.length == 0) db.insert({guildId: guildId})
+            db.update({guildId: guildId}, {$set: {unmuteMsg: msg}})
         })
         Resolve()
     })
