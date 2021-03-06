@@ -16,6 +16,22 @@ class random extends Commando.Command{
                     key:"count",
                     type: "integer",
                     prompt:"how many"
+                },
+                {
+                    key: "names",
+                    type: "string",
+                    default: '',
+                    prompt: "qwert",
+                    validate: (val)=>{
+                        try{
+                            return Array.isArray(JSON.parse(val))
+                        } catch{
+                            return false
+                        }
+                    },
+                    parse: (val)=>{
+                        return JSON.parse(val)
+                    }
                 }
             ],
             group: "random",
@@ -27,7 +43,7 @@ class random extends Commando.Command{
      * 
      * @param {Commando.CommandoMessage} msg 
      */
-    async run(msg, {name, count}){
+    async run(msg, {name, count, names}){
         if(name == "?"){
             let s = "Categories:\n";
             for(let cat in categories){
@@ -73,7 +89,8 @@ class random extends Commando.Command{
             result = o;
         }
         for(let i = 0; i < count; i++){
-            response += `${i+1}. ${result[getRndInteger(0, result.length)]}\n`
+            if(names) response += `${names[i]}. ${result[getRndInteger(0, result.length)]}\n`
+            else response += `${i+1}. ${result[getRndInteger(0, result.length)]}\n`
         }
 
         
