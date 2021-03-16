@@ -1,6 +1,6 @@
 const Commando = require("discord.js-commando")
 
-const {setUnmuteMsg} = require("../../database/settings.js")
+const {setUnmuteMsg} = require("../../database/muting.js")
 
 class SetMuteMsg extends Commando.Command{
     constructor(client){

@@ -65,7 +65,7 @@ exports.getCounters = ()=>{
 /**
  * @param {string} internalName `internalName` of counter to delete
  * @returns {"404" | "done"} "404" if no counter exists with given `counterName` 
- * @returns {"404" | "done"} "done" if action done
+ * @returns {"404" | "done"} `done` if done succesfull
  */
 exports.removeCounter = (internalName)=>{
     return new Promise(Resolve=>{

@@ -1,8 +1,8 @@
 const Datastore = require('nedb')
-const db = new Datastore({filename: "./database/settings.db", autoload: true});
+const db = new Datastore({filename: "./database/muting.db", autoload: true});
 /**
  * @param {String} guildId 
- * @returns {{guildId: String, muteRoleId: String, muteMsg: String}}
+ * @returns {Promise<{guildId: String, muteRoleId: String, muteMsg: String}>}
  */
 exports.getMuteSettings = (guildId)=>{
     return new Promise(Resolve =>{

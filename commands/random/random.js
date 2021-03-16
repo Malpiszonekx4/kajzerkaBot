@@ -5,7 +5,7 @@ const categories = require('./categories.js');
 class random extends Commando.Command{
     constructor(client){
         super(client,{
-            name:"random",
+            name: "random",
             args: [
                 {
                     key:"name",
@@ -40,8 +40,11 @@ class random extends Commando.Command{
         })
     }
     /**
-     * 
      * @param {Commando.CommandoMessage} msg 
+     * @param {Object} args
+     * @param {String} args.name
+     * @param {Number} args.count
+     * @param {String[]} args.name
      */
     async run(msg, {name, count, names}){
         if(name == "?"){
@@ -62,10 +65,9 @@ class random extends Commando.Command{
             if(categories[name] == undefined) return msg.reply(`${name} doesn't exist`)
             if(categories[name].length == undefined) return msg.reply(`${name} is a folder of collections\n try using ${name}.all`)
             result.push(categories[name])
-        } 
+        }
         else {
             let o = categories;
-            /** @type {string[]} */
             let n = name.split(".")
             let cat = "";
             for(let sub of n){
@@ -92,13 +94,11 @@ class random extends Commando.Command{
             if(names) response += `${names[i]}. ${result[getRndInteger(0, result.length)]}\n`
             else response += `${i+1}. ${result[getRndInteger(0, result.length)]}\n`
         }
-
-        
         msg.channel.send(response)
     }
 }
 function getRndInteger(min, max) {
-    let r = Math.round( Math.random() * (max - min) + min )
+    let r = Math.round(Math.random() * (max - min) + min)
     return r
 }
 module.exports = random

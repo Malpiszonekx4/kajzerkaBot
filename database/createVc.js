@@ -14,7 +14,7 @@ exports.getCreateVcChannelId = (guildId)=>{
         db.findOne({guildId: guildId}, (err, doc)=>{
             if(err) return console.error(err)
             if(doc == null) Resolve(undefined)
-            else Resolve(doc)
+            else Resolve(doc.channelId)
         })
     })
 }
@@ -32,7 +32,25 @@ exports.getCreateVcChannelName = (guildId)=>{
         db.findOne({guildId: guildId}, (err, doc)=>{
             if(err) return console.error(err)
             if(doc == null) Resolve(undefined)
-            else Resolve(doc)
+            else Resolve(doc.name)
+        })
+    })
+}
+
+exports.setCreateVcChannelCategory = (categoryId, guildId)=>{
+    db.findOne({guildId: guildId}, (err, doc)=>{
+        if(err) return console.error(err)
+        if(doc == null) db.insert({guildId: guildId, categoryId: categoryId})
+        else db.update({guildId: guildId}, {$set: {categoryId: categoryId}})
+    })
+}
+
+exports.getCreateVcChannelCategory = (guildId)=>{
+    return new Promise(Resolve =>{
+        db.findOne({guildId: guildId}, (err, doc)=>{
+            if(err) return console.error(err)
+            if(doc == null) Resolve(undefined)
+            else Resolve(doc.categoryId)
         })
     })
 }
