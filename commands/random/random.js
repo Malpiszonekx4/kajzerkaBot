@@ -91,8 +91,8 @@ class random extends Commando.Command{
             result = o;
         }
         for(let i = 0; i < count; i++){
-            if(names) response += `${names[i]}. ${result[getRndInteger(0, result.length)]}\n`
-            else response += `${i+1}. ${result[getRndInteger(0, result.length)]}\n`
+            if(names) response += `${names[i]}. ${result[getRndInteger(0, result.length-1)]}\n`
+            else response += `${i+1}. ${result[getRndInteger(0, result.length-1)]}\n`
         }
         msg.channel.send(response)
     }
