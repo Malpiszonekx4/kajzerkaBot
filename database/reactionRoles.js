@@ -1,7 +1,7 @@
 const Datastore = require('nedb')
 const db = new Datastore({filename: "./database/reactionRoles.db", autoload: true});
 /**
- * @returns {Promise<{messageId, emoji, roleId, guildId, channelId}[]>}
+ * @returns {Promise<{messageId, emoji, roleId, guildId, channelId, mode}[]>}
  */
 exports.getReactionRoles = (messageId)=>{
     return new Promise(Resolve =>{
@@ -12,7 +12,7 @@ exports.getReactionRoles = (messageId)=>{
     })
 }
 /**
- * @returns {Promise<{messageId, emoji, roleId, guildId, channelId}>}
+ * @returns {Promise<{messageId, emoji, roleId, guildId, channelId, mode}>}
  */
 exports.getReactionRole = (messageId, emoji)=>{
     return new Promise(Resolve =>{
@@ -39,4 +39,13 @@ exports.setReactionRole = (messageId, guildId, channelId, roleId, emoji)=>{
 
 exports.removeReactionRole = (messageId, emoji)=>{
     db.remove({messageId: messageId, emoji: emoji})
+}
+/**
+ * @param {"singe" || "multi"} mode 
+ * @param {String} messageId 
+ * @param {String} guildId 
+ * @param {String} channelId 
+ */
+exports.setMode = (mode, messageId,) => {
+    db.update({messageId: messageId}, {$set: {mode: mode}}, {multi: true})
 }

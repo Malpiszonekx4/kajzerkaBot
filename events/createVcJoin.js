@@ -1,6 +1,6 @@
 const { CommandoClient } = require('discord.js-commando');
 
-const {getCreateVcChannelName, getCreateVcChannelId, getCreateVcChannelCategory} = require("../database/createVc")
+const {getCreateVcChannelName, getCreateVcChannelId, getCreateVcChannelCategory, getCreatedVcChannelEditPerms} = require("../database/createVc")
 const {addVcChannel} = require("../database/tempVcChannels")
 
 /** @param {CommandoClient} bot */
@@ -16,9 +16,11 @@ async function event(bot){
         if(name == undefined) name = `🔈 ${newState.member.displayName}`
         else name = name.replace("%usernick%", newState.member.displayName)
         let parent = await getCreateVcChannelCategory(newState.guild.id)
-        let c = await newState.guild.channels.create(name, {type: "voice", parent: parent})
+        let c = await newState.guild.channels.create(name, {type: "voice", parent: parent.id})
         newState.member.voice.setChannel(c)
         addVcChannel(c.id, newState.guild.id)
+        let canedit = await getCreatedVcChannelEditPerms(newState.guild.id)
+        if(canedit) c.overwritePermissions([{id: newState.member.id, allow: ['MANAGE_CHANNELS', 'MANAGE_ROLES']}])
     })
 }
 module.exports = event

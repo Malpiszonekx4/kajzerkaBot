@@ -6,13 +6,14 @@ module.exports.damages = [
 	"Imani",
 	"Kinessa",
 	"Lian",
+	"Octavia",
 	"Sha Lin",
 	"Strix",
 	"Tiberius",
 	"Tyra",
 	"Viktor",
 	"Vivian",
-	"Willo",
+	"Willo"
 ]
 
 module.exports.tanks = [

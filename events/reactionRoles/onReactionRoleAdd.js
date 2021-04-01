@@ -12,10 +12,16 @@ async function event(bot){
         if(!reactionRoles) return
         for(let role of reactionRoles){
             if(reaction.emoji.name == role.emoji){
+                if(role.mode == "single"){
+                    let s = reaction.message.reactions.cache.some((val)=>{
+                        if(val == reaction) return false;
+                        return val.users.cache.some((us)=> us.id == user.id)
+                    })
+                    if(s) return reaction.users.remove(user);
+                }
                 (await (await bot.guilds.fetch(role.guildId)).members.fetch(user.id)).roles.add(role.roleId)
             }
         }
-
     })
 }
 module.exports = event

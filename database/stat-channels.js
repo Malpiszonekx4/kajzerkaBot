@@ -24,7 +24,5 @@ exports.setStatChannelText = (guildId, channelId, text)=>{
 }
 
 exports.removeStatChannel = (guildId, channelId) =>{
-    return new Promise(Resolve=>{
-        db.remove({guildId: guildId, channelId: channelId})
-    })
+    db.remove({guildId: guildId, channelId: channelId})
 }
