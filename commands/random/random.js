@@ -50,11 +50,7 @@ class random extends Commando.Command{
         if(name == "?"){
             let s = "Categories:\n";
             for(let cat in categories){
-                let i = 0;
-                for(let sub in categories[cat]){
-                    i++;
-                }
-                s +=cat+`(${i} sub categories)`+"\n"
+                s +=`\`${cat}\` (${cat.length} sub categories)`+"\n"
             }
             return msg.reply(s)
         }
@@ -62,9 +58,9 @@ class random extends Commando.Command{
         let result = [];
         let response = "";
         if(name.indexOf(".") == -1){
-            if(categories[name] == undefined) return msg.reply(`${name} doesn't exist`)
-            if(categories[name].length == undefined) return msg.reply(`${name} is a folder of collections\n try using ${name}.all`)
-            result.push(categories[name])
+            if(categories[name] == undefined) return msg.reply(`\`${name}\` doesn't exist`)
+            if(categories[name].length == undefined) return msg.reply(`\`${name}\` is a folder of collections\n try using \`${name}.all\``)
+            result = categories[name]
         }
         else {
             let o = categories;
@@ -75,7 +71,7 @@ class random extends Commando.Command{
                     if(!isNaN(parseInt(Object.keys(o)[0]))) return msg.reply(`Values for \`${cat}\` category:${o.map((val)=>{
                         return ` ${val}`
                     })}`)
-                    else return msg.reply(`Sub categories for ${cat}:\n ${Object.keys(o).map((val)=>{
+                    else return msg.reply(`Sub categories for \`${cat}\`:\n ${Object.keys(o).map((val)=>{
                         return ` ${val}`
                     })}`)
                 }
