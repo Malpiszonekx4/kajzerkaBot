@@ -29,7 +29,7 @@ class addCounter extends Commando.Command{
      * @param {Commando.CommandoMessage} message 
      */
     async run(message, {name, id}){
-        let cc = await createCounter(name, id)
+        let cc = await createCounter(name, id, message.author.id)
         if(cc == "exists"){
             message.reply(`Counter \`${id}\` already exists`)
         }

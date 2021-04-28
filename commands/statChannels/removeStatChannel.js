@@ -18,6 +18,9 @@ class SetStatChannel extends Commando.Command{
                     prompt: "Voice channel you want to remove",
                     type: 'voice-channel'
                 }
+            ],
+            userPermissions: [
+                "MANAGE_CHANNELS"
             ]
         })
     }
@@ -25,7 +28,7 @@ class SetStatChannel extends Commando.Command{
      * @param {Commando.CommandoMessage} msg 
      */
     async run(msg, {channel}){
-        removeStatChannel(msg.guild.id, channel.id )
+        removeStatChannel(msg.guild.id, channel.id)
     }
 }
 

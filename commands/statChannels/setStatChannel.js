@@ -24,6 +24,9 @@ class SetStatChannel extends Commando.Command{
                     prompt: "Name you want to set\n _variables_:\n %usercount% - count of users(without bots)\n %botcount% - count of bots",
                     type: 'string'
                 }
+            ],
+            userPermissions:[
+                "MANAGE_CHANNELS"
             ]
         })
     }

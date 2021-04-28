@@ -20,10 +20,10 @@ class SetMuteRole extends Commando.Command{
     }
     /**
      * 
-     * @param {Commando.CommandoMessage} message 
+     * @param {Commando.CommandoMessage} msg 
      */
-    async run(message, {role}){
-        setMuteRole(message.guild.id, role.id)
+    async run(msg, {role}){
+        setMuteRole(msg.guild.id, role.id)
     }
 }
 

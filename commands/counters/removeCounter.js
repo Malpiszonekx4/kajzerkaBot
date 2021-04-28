@@ -25,13 +25,11 @@ class RemoveCounter extends Commando.Command{
      */
     async run(message, {name}){
         let cc = await getCounter(name)
+        if(cc == undefined) return message.reply(`Counter \`${name}\` not found`)
+        if(cc.creatorId != message.author.id) return message.reply("Only author of counter can delete it")
         let c = await removeCounter(name)
-        if(c == "404"){
-            message.reply(`Counter \`${name}\` not found`)
-        }
-        else{
-            message.reply(`Counter \`${cc.displayName}\`(\`${cc.internalName}\`) has been removed`)
-        }
+        if(c == "404") message.reply(`Counter \`${name}\` not found`)
+        else message.reply(`Counter \`${cc.displayName}\`(\`${cc.internalName}\`) has been removed`)
     }
 }
 

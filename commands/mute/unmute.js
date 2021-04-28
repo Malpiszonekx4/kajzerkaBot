@@ -16,6 +16,9 @@ class unmute extends Commando.Command{
                 type:"member",
                 prompt: "What user do you want to unmute?"
              }
+            ],
+            userPermissions: [
+                "MUTE_MEMBERS"
             ]
         })
     }
@@ -36,9 +39,9 @@ class unmute extends Commando.Command{
         message.reply(`${user.displayName} has been unmuted`)
 
         //#region replace vars
-        let m = muteSettings.unmuteMsg.replace("%@unmuter%", message.member.toString())
+        let m = muteSettings.unmuteMsg
         //#endregion
-        if(m) user.send(m)
+        if(m) user.send(m.replace("%@unmuter%", message.member.toString()))
     }
 }
 
