@@ -2,6 +2,7 @@ const Discordjs = require("discord.js")
 const Commando = require("discord.js-commando")
 
 const {getMuteSettings} = require("../../database/muting.js")
+const {removeMuteByUserId} = require("../../database/mutes.js")
 
 class unmute extends Commando.Command{
     constructor(client){
@@ -42,6 +43,7 @@ class unmute extends Commando.Command{
         let m = muteSettings.unmuteMsg
         //#endregion
         if(m) user.send(m.replace("%@unmuter%", message.member.toString()))
+        removeMuteByUserId(user.id)
     }
 }
 
