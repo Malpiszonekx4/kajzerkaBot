@@ -1,11 +1,13 @@
 const Datastore = require('nedb')
 const db = new Datastore({filename: "./database/counters.db", autoload: true});
 
+
 /**
  * @typedef {Object} Counter
- * @property {string} name - `internalName` of counter
  * @property {number} count - value of counter
  * @property {string} creatorId
+ * @property {string} internalName
+ * @property {string} displayName
  */
 
 
