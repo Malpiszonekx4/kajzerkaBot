@@ -1,4 +1,4 @@
-const Datastore = require('nedb')
+const Datastore = require('@yetzt/nedb')
 const db = new Datastore({filename: "./database/muting.db", autoload: true});
 /**
  * @param {String} guildId 

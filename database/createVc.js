@@ -1,4 +1,4 @@
-const Datastore = require('nedb')
+const Datastore = require('@yetzt/nedb')
 const db = new Datastore({filename: "./database/createVc.db", autoload: true});
 
 exports.setCreateVcChannelId = (channelId, guildId)=>{

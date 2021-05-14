@@ -1,11 +1,12 @@
 const Commando = require("discord.js-commando")
 
-const {setMuteRole} = require("../../database/muting.js")
+const {setVcBannedRole} = require("../../database/vcbaning")
 
 class SetMuteRole extends Commando.Command{
     constructor(client){
         super(client,{
             name:"setvcbanrole",
+            aliases: ["setvcbannedrole"],
             group: "settings",
             memberName: "set vc banned role",
             description: "set vc banned role witch is given when user is vc banned",
@@ -23,7 +24,8 @@ class SetMuteRole extends Commando.Command{
      * @param {Commando.CommandoMessage} message 
      */
     async run(message, {role}){
-        message.react('WIP')
+        message.react('✅')
+        setVcBannedRole(message.guild.id, role.id)
     }
 }
 

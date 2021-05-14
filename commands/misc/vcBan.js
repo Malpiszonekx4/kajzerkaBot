@@ -49,8 +49,6 @@ class Clear extends Commando.Command{
      */
     async run(msg, {member, reason, time}){
         const parse = (string) => Date.now() + Duration(string)
-        //if(!member.bannable) return msg.reply(" I can't ban this user")
-        //member.ban({reason: reason, days: time})
         let ban = await getVcBan(member.guild.id, member.id)
         if(ban) return msg.reply('User already vc banned')
         let br = await getVcBannedRole(member.guild.id)

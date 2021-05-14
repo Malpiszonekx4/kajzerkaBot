@@ -1,5 +1,5 @@
-const DataStore = require('nedb');
-const db = new DataStore({filename: "./vcbans.db", autoload: true})
+const DataStore = require('@yetzt/nedb');
+const db = new DataStore({filename: "./database/vcbans.db", autoload: true})
 
 /**
  * @typedef VcBan
@@ -33,5 +33,13 @@ exports.getVcBan = (guildId, userId) => {
             if(err) console.log(err)
             resolve(doc)
         })
+    })
+}
+/**
+ * @returns {Promise<VcBan[]>}
+ */
+ exports.getVcBans = (guildId) => {
+    return new Promise((resolve)=>{
+        resolve(db.getAllData())
     })
 }
