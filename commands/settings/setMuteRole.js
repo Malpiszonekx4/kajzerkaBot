@@ -15,6 +15,9 @@ class SetMuteRole extends Commando.Command{
                     prompt: "What role do you want to set as mute role",
                     type: 'role'
                 }
+            ],
+            userPermissions: [
+                "MANAGE_ROLES"
             ]
         })
     }

@@ -17,6 +17,9 @@ class Kick extends Commando.Command{
             description: "kick user from server",
             clientPermissions:[
                 "KICK_MEMBERS"
+            ],
+            userPermissions: [
+                "KICK_MEMBERS"
             ]
         })
     }

@@ -15,6 +15,9 @@ class SetCreateVcChannelId extends Commando.Command{
                     prompt: "name you want to set\nVariables:\n%usernick% - user display name",
                     type: 'string'
                 }
+            ],
+            userPermissions: [
+                "MANAGE_CHANNELS"
             ]
         })
     }

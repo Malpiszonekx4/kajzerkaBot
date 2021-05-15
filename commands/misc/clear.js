@@ -23,6 +23,12 @@ class Clear extends Commando.Command{
                     type: 'boolean',
                     default: false
                 }
+            ],
+            clientPermissions: [
+                "MANAGE_MESSAGES"
+            ],
+            userPermissions: [
+                "MANAGE_MESSAGES"
             ]
         })
     }

@@ -24,7 +24,10 @@ class SetReactionRole extends Commando.Command{
             ],
             group: "reactionroles",
             memberName: "reactionrolemode",
-            description: "change reaction role mode"
+            description: "change reaction role mode",
+            userPermissions: [
+                "MANAGE_ROLES"
+            ]
         })
     }
     /**

@@ -21,6 +21,9 @@ class VoiceKick extends Commando.Command{
             description: "kick user from voice chat",
             clientPermissions:[
                 "MOVE_MEMBERS"
+            ],
+            userPermissions: [
+                "MOVE_MEMBERS"
             ]
         })
     }

@@ -15,6 +15,9 @@ class SetMuteMsg extends Commando.Command{
                     prompt: "What message do you want to send on user mute \nfor none type `---`",
                     type: 'string'
                 }
+            ],
+            userPermissions: [
+                "MANAGE_ROLES"
             ]
         })
     }

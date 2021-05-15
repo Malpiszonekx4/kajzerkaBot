@@ -15,6 +15,9 @@ class SetCreateVcChannelCategory extends Commando.Command{
                     prompt: "Category id",
                     type: 'category-channel'
                 }
+            ],
+            userPermissions: [
+                "MANAGE_CHANNELS"
             ]
         })
     }

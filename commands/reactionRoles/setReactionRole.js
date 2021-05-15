@@ -25,7 +25,10 @@ class SetReactionRole extends Commando.Command{
             ],
             group: "reactionroles",
             memberName: "setreactionrole",
-            description: "set emoji to react to gain role"
+            description: "set emoji to react to gain role",
+            userPermissions: [
+                "MANAGE_ROLES"
+            ]
         })
     }
     /**

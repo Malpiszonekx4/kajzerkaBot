@@ -20,7 +20,10 @@ class SetReactionRole extends Commando.Command{
             ],
             group: "reactionroles",
             memberName: "removereactionrole",
-            description: "remove reaction role"
+            description: "remove reaction role",
+            userPermissions: [
+                "MANAGE_ROLES"
+            ]
         })
     }
     /**

@@ -15,6 +15,9 @@ class SetCreateVcChannelId extends Commando.Command{
                     prompt: "Id of channel you want to set to",
                     type: 'voice-channel'
                 }
+            ],
+            userPermissions: [
+                "MANAGE_CHANNELS"
             ]
         })
     }

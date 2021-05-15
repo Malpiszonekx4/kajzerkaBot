@@ -38,6 +38,9 @@ class mute extends Commando.Command{
             ],
             userPermissions: [
                 "MANAGE_ROLES"
+            ],
+            clientPermissions: [
+                "MUTE_MEMBERS"
             ]
         })
     }
