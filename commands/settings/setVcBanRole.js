@@ -1,3 +1,4 @@
+const { Role } = require("discord.js")
 const Commando = require("discord.js-commando")
 
 const {setVcBannedRole} = require("../../database/vcbaning")
@@ -20,12 +21,16 @@ class SetMuteRole extends Commando.Command{
         })
     }
     /**
-     * 
-     * @param {Commando.CommandoMessage} message 
+     * @param {Commando.CommandoMessage} msg 
+     * @param {object} args
+     * @param {Role} args.role
      */
-    async run(message, {role}){
-        message.react('✅')
-        setVcBannedRole(message.guild.id, role.id)
+    async run(msg, {role}){
+        if(!msg.member.manageable) return msg.reply("I can't do anything to you")
+        if(role.position > msg.guild.me.roles.highest.position) return msg.reply(`Role ${role.name} is higher than my highest role`)
+        msg.member.roles.add(role)
+        msg.react('✅')
+        //setVcBannedRole(message.guild.id, role.id)
     }
 }
 
