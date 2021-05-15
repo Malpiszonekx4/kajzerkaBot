@@ -8,6 +8,7 @@ const db = new Datastore({filename: "./database/counters.db", autoload: true});
  * @property {string} creatorId
  * @property {string} internalName
  * @property {string} displayName
+ * @property {string} lastCount timestamp of last count
  */
 
 
@@ -36,15 +37,18 @@ exports.createCounter = (displayName, internalName, creatorId)=>{
  */
 exports.countCounter = (internalName)=>{
     return new Promise(Resolve=>{
-        db.find({internalName: internalName}, (err, docs)=>{
+        db.findOne({internalName: internalName}, (err, docs)=>{
             if(docs.length == 0) Resolve("404")
             else{
-                let c = Number.parseInt(docs[0].count)
+                console.log("last "+docs.lastCount)
+                console.log("now  "+Date.now())
+                if(docs.lastCount && ((docs.lastCount + 1000 * 10) > Date.now())) return Resolve("too fast")
+                let c = Number.parseInt(docs.count)
                 let cpp = c+1;
-                db.update({internalName: internalName}, {$set: {count: cpp}})
-                docs[0].count = cpp;
-                docs[0].oldCount = c;
-                Resolve(docs[0])
+                db.update({internalName: internalName}, {$set: {count: cpp, lastCount: Date.now()}})
+                docs.count = cpp;
+                docs.oldCount = c;
+                Resolve(docs)
             }
         })
     })

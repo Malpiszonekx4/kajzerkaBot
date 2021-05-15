@@ -27,6 +27,9 @@ class Count extends Commando.Command{
         if(cc == "404"){
             message.reply("Counter with this name doesn't exist")
         }
+        else if(cc == "too fast"){
+            message.reply("Someone counted this counter recently")
+        }
         else{
             message.reply(`Counter \`${cc.internalName}\` is now \`${cc.count}\``)
         }
