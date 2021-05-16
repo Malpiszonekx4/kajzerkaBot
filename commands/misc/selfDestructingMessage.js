@@ -39,7 +39,7 @@ class Clear extends Commando.Command{
                     default: false
                 }
             ],
-            userPermissions: ['BAN_MEMBERS'],
+            userPermissions: ["MANAGE_MESSAGES"],
             clientPermissions: ["SEND_MESSAGES", "MANAGE_MESSAGES"]
         })
     }
