@@ -37,7 +37,14 @@ class Clear extends Commando.Command{
                     prompt: "Send with yours nickname and avatar?",
                     type: "boolean",
                     default: false
+                },
+                {
+                    key: "delCmd",
+                    prompt: "delete the command message",
+                    type: "boolean",
+                    default: true
                 }
+
             ],
             userPermissions: ["MANAGE_MESSAGES"],
             clientPermissions: ["SEND_MESSAGES", "MANAGE_MESSAGES"]
@@ -50,7 +57,7 @@ class Clear extends Commando.Command{
      * @param {string} args.time
      * @param {boolean} args.asUser
      */
-    async run(msg, {message, time, asUser}){
+    async run(msg, {message, time, asUser, delCmd}){
         /** @type {Discord.Message} */
         let mess;
         if(asUser){
@@ -73,6 +80,7 @@ class Clear extends Commando.Command{
         }
         else mess = await msg.channel.send(message)
         mess.delete({reason: "self destruct", timeout: Duration(time)})
+        if(delCmd) msg.delete()
     }
 }
 
