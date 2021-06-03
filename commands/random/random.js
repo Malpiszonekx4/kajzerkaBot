@@ -50,7 +50,7 @@ class random extends Commando.Command{
         if(name == "?"){
             let s = "Categories:\n";
             for(let cat in categories){
-                s +=`\`${cat}\` (${cat.length} sub categories)`+"\n"
+                s +=`\`${cat}\` (${Object.values(categories[cat]).length} sub categories)`+"\n"
             }
             return msg.reply(s)
         }
@@ -59,7 +59,7 @@ class random extends Commando.Command{
         let response = "";
         if(name.indexOf(".") == -1){
             if(categories[name] == undefined) return msg.reply(`\`${name}\` doesn't exist`)
-            if(categories[name].length == undefined) return msg.reply(`\`${name}\` is a folder of collections\n try using \`${name}.all\``)
+            if(categories[name].length == undefined) return msg.reply(`\`${name}\` is a folder of collections\n use \`${name}.?\` to view aviable options`)
             result = categories[name]
         }
         else {

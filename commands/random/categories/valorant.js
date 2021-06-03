@@ -3,7 +3,8 @@ exports.maps = [
     "Bind",
     "Haven",
     "Split",
-    "Icebox"
+    "Icebox",
+    "Breeze"
 ]
 
 exports.agents = [

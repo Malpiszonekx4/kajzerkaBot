@@ -55,7 +55,8 @@ module.exports.flanks = [
 	"Moji",
 	"Skye",
 	"Talus",
-	"Zhin"
+	"Zhin",
+	"Vatu"
 ]
 
 module.exports.all = new Array().concat(module.exports.damages).concat(module.exports.tanks).concat(module.exports.healers).concat(module.exports.flanks)
