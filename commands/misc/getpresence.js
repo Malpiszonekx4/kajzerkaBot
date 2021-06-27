@@ -27,11 +27,26 @@ class Cmd extends Commando.Command{
         .setColor("#7289DA")
 
         if(member.user) res.setAuthor(`${member.displayName}${member.displayName.endsWith('s') ? "'" : "'s"} presence`, member.user.avatarURL())
-
+        
         for(let acti of member.presence.activities){
-            res.addField(acti.name, `Details: ${acti.details} \n
-            State: ${acti.state} \n
-            Started: ${acti.timestamps.start.toUTCString()}`)
+            if(acti.name == "Spotify"){
+                res.addField(acti.name, `
+                    Song(\`details\`): ${acti.details} \n
+                    Artist(\`state\`): ${acti.state}
+                `)
+            } else if(acti.name == "Custom Status"){
+                console.log("CUSTOM STATUS: "+ acti.name)
+                res.addField(acti.name, `
+                    State: ${acti.state}
+                    Emoji: <:${acti.emoji.name}:${acti.emoji.id}>
+                `)
+            } else {
+                res.addField(acti.name,`
+                    Details: ${acti.details} \n
+                    State: ${acti.state} \n
+                    Started: ${acti.timestamps?.start.toUTCString()} \n
+                `)
+            }
         }
         msg.channel.send(res)
     }
