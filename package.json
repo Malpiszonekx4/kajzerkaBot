@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "@yetzt/nedb": "^1.8.0",
+    "discord-buttons": "^3.2.1",
     "discord.js": "^12.5.3",
     "discord.js-commando": "^0.12.3",
     "dotenv": "^10.0.0",

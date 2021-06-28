@@ -1,5 +1,7 @@
 const Commando = require("discord.js-commando")
 
+const disBut = require('discord-buttons');
+
 const categories = require('./categories.js');
 
 class random extends Commando.Command{
@@ -90,7 +92,13 @@ class random extends Commando.Command{
             if(names) response += `${names[i]}. ${result[getRndInteger(0, result.length-1)]}\n`
             else response += `${i+1}. ${result[getRndInteger(0, result.length-1)]}\n`
         }
-        msg.channel.send(response)
+
+        let btn = new disBut.MessageButton()
+            .setStyle('blurple')
+            .setLabel("Reroll")
+            .setID(JSON.stringify({name, count, names}))
+
+        msg.channel.send(response, btn)
     }
 }
 function getRndInteger(min, max) {

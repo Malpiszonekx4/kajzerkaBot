@@ -3,6 +3,7 @@ const fs = require('fs');
 
 const Commando = require('discord.js-commando');
 const client = new Commando.Client({owner: process.env.ownerId,commandPrefix: process.env.prefix, partials: ['MESSAGE', 'CHANNEL', 'REACTION']})
+require('discord-buttons')(client);
 
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
