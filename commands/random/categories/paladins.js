@@ -1,3 +1,5 @@
+module.exports.champions = {}
+
 module.exports.champions.damages = [
 	"Bomb King",
 	"Cassie",
@@ -45,7 +47,7 @@ module.exports.champions.healers = [
 	"Ying"
 ]
 
-module.exports.chamions.flanks = [
+module.exports.champions.flanks = [
 	"Vora",
 	"Buck",
 	"Evie",
@@ -72,6 +74,9 @@ module.exports.gamemodes = [
 	"King of the Hill",
 	"Onslaught"
 ]
+
+module.exports.maps = {}
+
 module.exports.maps.siege = [
 	"Frog Isle",
 	"Jaguar Falls",
