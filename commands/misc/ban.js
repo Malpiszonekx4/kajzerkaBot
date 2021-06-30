@@ -1,6 +1,11 @@
 const Discord = require("discord.js");
 const Commando = require("discord.js-commando")
 
+const {randomGif} = require('../../tenor');
+const { getRandomInteger } = require("../../utils");
+
+let gifSearchTerms = ["ban", "banned", "banhammer"]
+
 class Clear extends Commando.Command{
     constructor(client){
         super(client,{
@@ -35,10 +40,17 @@ class Clear extends Commando.Command{
      * @param {Discord.GuildMember} args.member
      */
     async run(msg, {member, reason, time}){
-        if(!member.bannable) return msg.reply(" I can't ban this user")
-        member.ban({reason: reason, days: time})
+        //if(!member.bannable) return msg.reply(" I can't ban this user")
+        //member.ban({reason: reason, days: time})
 
-        msg.reply(`successfully banned ${member} for \`${reason}\` for ${time} days`)
+        let gif = await randomGif(gifSearchTerms[getRandomInteger(0, gifSearchTerms.length-1)])
+        let embed = new Discord.MessageEmbed()
+                    .setDescription(`successfully banned ${member} for \`${reason}\` for ${time} days`)
+                    .setImage(gif.gifUrl)
+                    .setFooter("Powered by Tenor") // required attribution
+                    .setColor("#7289DA") //blurple
+
+        msg.reply(embed)
         
     }
 }

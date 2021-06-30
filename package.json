@@ -11,12 +11,13 @@
   "license": "ISC",
   "dependencies": {
     "@yetzt/nedb": "^1.8.0",
+    "axios": "^0.21.1",
     "discord-buttons": "^3.2.1",
     "discord.js": "^12.5.3",
     "discord.js-commando": "^0.12.3",
     "dotenv": "^10.0.0",
-    "parse-duration": "^1.0.0",
-    "node": "^16.3.0"
+    "node": "^16.3.0",
+    "parse-duration": "^1.0.0"
   },
   "engines": {
     "node": ">=14.0.0"

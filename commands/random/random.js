@@ -2,6 +2,8 @@ const Commando = require("discord.js-commando")
 
 const disBut = require('discord-buttons');
 
+const {getRandomInteger} = require('../../utils');
+
 const categories = require('./categories.js');
 
 class random extends Commando.Command{
@@ -89,8 +91,8 @@ class random extends Commando.Command{
             result = o;
         }
         for(let i = 0; i < count; i++){
-            if(names) response += `${names[i]}. ${result[getRndInteger(0, result.length-1)]}\n`
-            else response += `${i+1}. ${result[getRndInteger(0, result.length-1)]}\n`
+            if(names) response += `${names[i]}. ${result[getRandomInteger(0, result.length-1)]}\n`
+            else response += `${i+1}. ${result[getRandomInteger(0, result.length-1)]}\n`
         }
 
         let btn = new disBut.MessageButton()
@@ -101,8 +103,5 @@ class random extends Commando.Command{
         msg.channel.send(response, btn)
     }
 }
-function getRndInteger(min, max) {
-    let r = Math.round(Math.random() * (max - min) + min)
-    return r
-}
+
 module.exports = random
