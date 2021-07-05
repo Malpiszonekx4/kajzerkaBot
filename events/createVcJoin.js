@@ -16,7 +16,7 @@ async function event(bot){
         if(name == undefined) name = `🔈 ${newState.member.displayName}`
         else name = name.replace("%usernick%", newState.member.displayName)
         let parent = await getCreateVcChannelCategory(newState.guild.id)
-        let c = await newState.guild.channels.create(name, {type: "voice", parent: parent ? parent.id : undefined})
+        let c = await newState.guild.channels.create(name, {type: "voice", parent: parent ? parent : undefined})
         newState.member.voice.setChannel(c)
         addVcChannel(c.id, newState.guild.id)
         let canedit = await getCreatedVcChannelEditPerms(newState.guild.id)
